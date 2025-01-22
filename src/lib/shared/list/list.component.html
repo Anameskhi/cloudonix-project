@@ -1,0 +1,15 @@
+
+<p-table [value]="products">
+  <ng-container *ngFor="let col of productCols">
+    <ng-template pTemplate="header" let-columns>
+      <tr>
+        <th *ngFor="let col of productCols">{{ col.header }}</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-product let-productIndex="index">
+      <tr>
+        <td *ngFor="let col of productCols">{{ product[col.field] }}</td>
+      </tr>
+    </ng-template>
+  </ng-container>
+</p-table>

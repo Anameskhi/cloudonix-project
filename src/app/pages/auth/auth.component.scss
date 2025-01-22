@@ -1,0 +1,30 @@
+.container {
+    width: var(--container-width);
+    height: var(--container-height);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  
+    .login {
+      border: 1px solid var(--border-color);
+      padding: var(--padding);
+      border-radius: var(--border-radius);
+  
+      &__input {
+        display: flex;
+        gap: var(--input-gap);
+        margin-bottom: var(--input-margin-bottom);
+        align-items: center;
+        font-size: var(--input-font-size);
+      }
+  
+      &__button {
+        color: #fff;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+  }
