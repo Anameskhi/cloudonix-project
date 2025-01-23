@@ -19,7 +19,7 @@ export class AuthComponent {
     if(this.keyControl.invalid) {
       return
     }
-    this.authService._key.set(this.keyControl.value)
+    this.authService.key = this.keyControl.value;
     this.router.navigate(['/products-list']);
   }
 }

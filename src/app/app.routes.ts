@@ -1,6 +1,7 @@
-import { RedirectCommand, Routes } from '@angular/router';
+import { Routes } from '@angular/router';
 import { AuthComponent } from './pages/auth/auth.component';
-import { ProductListComponent } from './pages/product-list/product-list.component';
+import { ProductListComponent } from './pages/products/product-list/product-list.component';
+import { authGuard } from './core/guards/auth.guard';
 
 export const routes: Routes = [
     {
@@ -15,9 +16,10 @@ export const routes: Routes = [
     {
         path: 'products-list',
         loadComponent: () =>
-          import('./pages/product-list/product-list.component').then(
+          import('./pages/products/product-list/product-list.component').then(
             (m) => m.ProductListComponent
           ),
+        canActivate: [authGuard],
       },
       { path: '**', redirectTo: 'auth' },
 ];
