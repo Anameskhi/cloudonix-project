@@ -1,0 +1,8 @@
+.product-row {
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.product-row:hover {
+  background-color: #3f3f46;
+}

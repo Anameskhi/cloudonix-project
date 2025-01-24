@@ -3,4 +3,5 @@ export const productCols = [
     { field: 'name', header: 'Name' },
     { field: 'sku', header: 'SKU' },
     { field: 'cost', header: 'Price' },
+    { field: 'action', header: '' },
 ];

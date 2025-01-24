@@ -6,7 +6,7 @@ export const loginGuard: CanActivateFn = (route, state) => {
   const router = inject(Router);
   const authService = inject(AuthService);
 
-  if (authService.key != null) {
+  if (authService.key) {
     router.navigate(['/products-list']);
     return false;
   } else {

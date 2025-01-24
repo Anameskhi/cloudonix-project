@@ -1,0 +1,119 @@
+section {
+  display: flex;
+  justify-content: center;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin: 1.5rem 10px 8px 10px;
+  background-color: #18181b;
+  border: 1px solid #97979b;
+  border-radius: 12px;
+  width: 60%;
+
+  .card {
+    background-color: var(--list-bg-color);
+    border-radius: 8px;
+    border: 1px solid var(--list-row-hover-bg-color);
+    padding: 24px;
+
+    .add-button {
+      float: right;
+    }
+
+    .scope_container {
+      display: flex;
+
+
+      .row {
+        margin-bottom: 15px;
+        display: flex;
+        flex-direction: column;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        &:first-child {
+          width: 260px;
+        }
+
+        .user-wrapper {
+          cursor: pointer;
+          display: flex;
+          height: 22px;
+          margin: 10.5px 0;
+
+          .user-icon {
+            top: -2.25px;
+            padding-right: 3.5px;
+            position: relative;
+            height: 10.5px;
+          }
+        }
+
+
+        .value {
+          font-size: 1rem;
+          height: 43px;
+          align-items: center;
+          display: flex;
+
+          &.link {
+            position: relative;
+            top: 2px;
+          }
+        }
+      }
+    }
+
+    .delete_button {
+      float: right;
+    }
+
+  }
+
+  .flex-card {
+    display: flex;
+    justify-content: space-between;
+    .title {
+      font-weight: 700;
+      font-size: 20px;
+      margin-left: 20px;
+    }
+  }
+
+  .form-container {
+    display: flex;
+    align-items: center;
+    padding-bottom: 24px;
+
+    .label {
+      width: 240px;
+      padding-right: 1rem;
+    }
+
+    .formControl {
+      min-width: calc(100% - 240px);
+
+      ::ng-deep input {
+        width: 100%;
+      }
+    }
+    .width {
+      width: 78%
+    }
+
+    .text-area {
+      display: block;
+      width: 78%;
+      height: 80px !important;
+      background-color: var(--main-bg-color);
+      overflow: auto !important;
+    }
+
+  }
+
+
+}

@@ -1,7 +1,10 @@
+@import "primeicons/primeicons.css";
+
 body {
     height: 100vh;
     width: 100vw;
     overflow: hidden;
+    margin: 0
 }
 :root {
     /* Colors */
@@ -11,7 +14,7 @@ body {
     --text-color: #333;  /* Text color */
     --background-color: #f4f4f4;  /* Background color */
   }
-  
+
   /* Define Sizes in :root */
   :root {
     /* Sizes */

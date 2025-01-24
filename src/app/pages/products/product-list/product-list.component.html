@@ -1,3 +1,3 @@
 <div class="container">
-    <app-list [productCols]="productCols" [products]="products()" ></app-list>
+  <app-list (deleteProduct)="deleteProduct($event)" navigateToRoute="edit" [productCols]="productCols" [products]="products()" ></app-list>
 </div>

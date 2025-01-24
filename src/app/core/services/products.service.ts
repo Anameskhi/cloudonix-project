@@ -8,9 +8,15 @@ import { Observable } from 'rxjs';
 })
 export class ProductsService extends BaseService {
 
- 
+
   getProducts(): Observable<Product[]> {
    return  this.get<Product[]>()
+  }
 
+  addProduct(product: Product): Observable<Product> {
+    return this.post<Product>(product)
+  }
+  deleteProduct(id: number): Observable<Product> {
+    return this.delete<Product>(id)
   }
 }

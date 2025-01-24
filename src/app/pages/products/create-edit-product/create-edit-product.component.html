@@ -1,1 +1,111 @@
-<p>create-edit-product works!</p>
+<section>
+  <div class="container">
+    <div class="flex-card">
+      <p class="title">
+        {{ isEditMode() ? "Details and edit product" : "Add Product" }}
+      </p>
+    </div>
+
+    <div class="card">
+      <form [formGroup]="userGroupForm">
+        @if (!isEditMode()) {
+        <div class="form-container">
+          <p class="label">Name</p>
+          <input
+            pInputText
+            class="formControl"
+            formControlName="name"
+            placeholder="Name"
+          />
+        </div>
+
+        <div class="form-container">
+          <p class="label">SKU</p>
+          <input
+            pInputText
+            class="formControl"
+            formControlName="sku"
+            placeholder="SKU"
+          />
+        </div>
+        <div class="form-container">
+          <p class="label">Cost</p>
+          <input
+            pInputText
+            class="formControl"
+            formControlName="cost"
+            placeholder="Cost"
+          />
+          @if(userGroupForm.get('cost')?.invalid && userGroupForm.get('cost')?.touched){
+            <div class="error-message">
+              @if(userGroupForm.get('cost')?.errors?.['required']){
+                <small >
+                  Cost is required.
+                </small>
+              }
+              @if(userGroupForm.get('cost')?.errors?.['pattern']){
+                <small>
+                  Cost must be a valid number.
+                </small>
+              }
+
+
+            </div>
+          }
+
+        </div>
+        <div class="form-container">
+          <p class="label">Description</p>
+          <textarea
+            class="text-area"
+            pTextarea
+            placeholder="Description"
+            formControlName="description"
+          >
+          </textarea>
+        </div>
+        <div formGroupName="profile">
+          <div class="form-container">
+            <p class="label">Type</p>
+            <p-dropdown
+              class="width"
+              formControlName="type"
+              placeholder="Type"
+              [options]="items"
+            ></p-dropdown>
+          </div>
+
+          <div class="form-container">
+            <p class="label">Backlog</p>
+            <p-inputnumber
+              class="width"
+              mode="decimal"
+              placeholder="backlog"
+              [showButtons]="true"
+              inputId="minmax-buttons"
+              [min]="2"
+              [max]="100"
+              formControlName="backlog"
+            ></p-inputnumber>
+          </div>
+
+          <div class="form-container">
+            <p class="label">Available</p>
+            <p-checkbox formControlName="avaible" binary="true"></p-checkbox>
+          </div>
+        </div>
+        <p-button
+          [disabled]="!userGroupForm.valid"
+          class="add-button"
+          [icon]="'pi pi-plus'"
+          [severity]="'success'"
+          [label]="isEditMode() ? 'Update' : 'Add'"
+          (click)="submitForm()"
+        >
+        </p-button>
+
+        } @else { }
+      </form>
+    </div>
+  </div>
+</section>

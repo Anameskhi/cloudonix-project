@@ -12,14 +12,14 @@ export class BaseService {
     private http: HttpClient
   ) { }
 
-  post<T>(url: string, body: any ): Observable<T>{
-    return this.http.post<T>(this.apiUrl + url, body)
+  post<T>( body: any ): Observable<T>{
+    return this.http.post<T>(this.apiUrl , body)
   }
   get<T>(): Observable<T>{
     return this.http.get<T>(this.apiUrl)
   }
 
-  delete<T>(url: string): Observable<T>{
-    return this.http.delete<T>(this.apiUrl + url)
+  delete<T>(id: number): Observable<T>{
+    return this.http.delete<T>(this.apiUrl + id)
   }
 }

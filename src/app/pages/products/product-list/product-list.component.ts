@@ -16,6 +16,8 @@ export class ProductListComponent implements OnInit {
   productCols = productCols
   products = signal<Product[]>([])
   productServcie = inject(ProductsService)
+  items: any | undefined;
+
 
   ngOnInit(): void {
     this.productServcie.getProducts().subscribe((res) => {
@@ -26,6 +28,12 @@ export class ProductListComponent implements OnInit {
       }));
 
       this.products.set(enrichedProducts);
+    });
+  }
+  deleteProduct(product: Product) {
+    console.log(product)
+    this.productServcie.deleteProduct(product.id).subscribe(() => {
+      this.products.update((products) => products.filter((p) => p.id !== product.id));
     });
   }
 }

@@ -1,0 +1,14 @@
+.navbar .p-menubar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar .p-menuitem {
+  flex-grow: 1;
+}
+
+.navbar .p-menuitem:last-child,
+.navbar .p-menuitem:nth-last-child(2) {
+  margin-left: auto;
+}
