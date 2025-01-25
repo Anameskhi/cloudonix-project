@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Router } from '@angular/router';
 import { MenubarModule } from 'primeng/menubar';
+import { AuthService } from '../../core';
 
 @Component({
   selector: 'app-navbar',
@@ -12,11 +13,17 @@ import { MenubarModule } from 'primeng/menubar';
 })
 export class NavbarComponent implements OnInit {
   items: any | undefined;
-  constructor(private router: Router) {}
+  
+  loggedIn = signal(false);
+  constructor(private router: Router, private authService: AuthService) {
+  }
 
   ngOnInit(): void {
-    const isLoggedIn = !!localStorage.getItem('authKey');
+     this.loggedIn.set(!!this.authService.key); // Check if the user is logged in
 
+     this.updateMenuItems()
+  }
+  updateMenuItems(): void {
     this.items = [
       {
         label: 'Home',
@@ -25,7 +32,7 @@ export class NavbarComponent implements OnInit {
       },
     ];
 
-    if (isLoggedIn) {
+    if (this.loggedIn()) {
       this.items.push(
         {
           label: 'Add Product',
@@ -33,17 +40,18 @@ export class NavbarComponent implements OnInit {
           routerLink: ['/add-product'],
         },
         {
-        label: 'Logout',
-        icon: 'pi pi-sign-out',
-        command: () => this.logOut(),
-      }
-
-    );
+          label: 'Logout',
+          icon: 'pi pi-sign-out',
+          command: () => this.logOut(),
+        }
+      );
     }
   }
 
   logOut() {
-    localStorage.clear();
-    this.router.navigate(['/auth']); // Navigate to the auth page
+    this.authService.key = null; // Clear the key in the service
+    this.loggedIn.set(false); // Update the signal to false
+    this.router.navigate(['/auth']); // Navigate to the login page
+    this.updateMenuItems(); // Rebuild the menu items
   }
 }

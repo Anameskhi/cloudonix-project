@@ -37,7 +37,7 @@ export const routes: Routes = [
         canActivate: [authGuard],
       },
       {
-        path: 'edit/:id',
+        path: 'preview/:id',
         loadComponent: () =>
           import('./pages/products/create-edit-product/create-edit-product.component').then(
             (m) => m.CreateEditProductComponent

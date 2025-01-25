@@ -28,6 +28,7 @@ export class ListComponent {
   }
 }
 
+
 onDeleteProduct( product: Product,event: MouseEvent): void {
   event.stopPropagation(); 
   this.deleteProduct.emit(product);

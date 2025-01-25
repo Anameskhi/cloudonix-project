@@ -20,6 +20,6 @@ export class BaseService {
   }
 
   delete<T>(id: number): Observable<T>{
-    return this.http.delete<T>(this.apiUrl + id)
+    return this.http.delete<T>(this.apiUrl +'/' + id)
   }
 }
