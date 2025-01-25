@@ -5,6 +5,8 @@ export interface Product {
     name: string;
     profile: {
         type: string;
+        avaible: boolean;
+        backlog: number;
     };
     sku: string;
 }

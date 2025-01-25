@@ -44,6 +44,7 @@ export class CreateEditProductComponent {
   router = inject(Router);
   value: any;
   productService = inject(ProductsService);
+  acceptedEdit = false
   items = [
     'furniture',
     'equipment',
@@ -68,7 +69,26 @@ export class CreateEditProductComponent {
   });
 
   ngOnInit(): void {
+
     this.listenToQueryParams();
+   this.fetcValues()
+  }
+
+  fetcValues(): void {
+    if(this.isEditMode()&& !this.acceptedEdit){
+      this.productService.getProduct(this.editId()).subscribe(res => {
+        const { profile, ...formValues } = res; 
+        
+        this.userGroupForm.patchValue({ ...formValues, ...profile });
+  
+        Object.keys(this.userGroupForm.controls).forEach(key => {
+          const control = this.userGroupForm.get(key);
+          if (control) {
+            control.disable();
+          }
+        });
+      });
+    }
   }
   submitForm(): void {
     if (!this.isEditMode()) {
@@ -89,8 +109,14 @@ export class CreateEditProductComponent {
         }
       });
   }
-  search(event: AutoCompleteCompleteEvent) {
-    let _items = [...Array(10).keys()];
 
+    acceptEdit(): void {
+      this.acceptedEdit = true
+      Object.keys(this.userGroupForm.controls).forEach(key => {
+        const control = this.userGroupForm.get(key);
+        if (control) {
+          control.enable();
+        }
+      });
     }
 }

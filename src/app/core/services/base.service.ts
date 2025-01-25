@@ -15,8 +15,9 @@ export class BaseService {
   post<T>( body: any ): Observable<T>{
     return this.http.post<T>(this.apiUrl , body)
   }
-  get<T>(): Observable<T>{
-    return this.http.get<T>(this.apiUrl)
+  get<T>(id?: string): Observable<T> {
+    const url = id ? `${this.apiUrl}/${id}` : this.apiUrl; 
+    return this.http.get<T>(url);
   }
 
   delete<T>(id: number): Observable<T>{
