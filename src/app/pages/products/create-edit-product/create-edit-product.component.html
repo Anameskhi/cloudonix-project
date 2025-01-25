@@ -173,28 +173,27 @@
               <p-checkbox formControlName="avaible" binary="true"></p-checkbox>
             </div>
           </div>
-          
-        }
-        {{!acceptedEdit}}
-        @if(!acceptedEdit){
-          <p-button
-          class="add-button"
-          [severity]="'success'"
-          label="I want to edit form"
-          (click)="acceptEdit()"
-        >
-      </p-button>
-        }@else{
-          <p-button
-          [disabled]="!userGroupForm.valid"
-          class="add-button"
-          [icon]="isEditMode() ? 'pi pi-pen-to-square' : 'pi pi-plus'"
-          [severity]="'success'"
-          label="Edit"
-          (click)="submitForm()"
-        >
+          @if(!acceptedEdit){
+            <p-button
+            class="add-button"
+            [severity]="'success'"
+            label="I want to edit form"
+            (click)="acceptEdit()"
+          >
         </p-button>
+          }@else{
+            <p-button
+            [disabled]="!userGroupForm.valid"
+            class="add-button"
+            [icon]="isEditMode() ? 'pi pi-pen-to-square' : 'pi pi-plus'"
+            [severity]="'success'"
+            label="Edit"
+            (click)="submitForm()"
+          >
+          </p-button>
+          }
         }
+     
    
     
       </form>

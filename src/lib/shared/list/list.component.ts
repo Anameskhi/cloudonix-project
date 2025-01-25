@@ -20,7 +20,6 @@ export class ListComponent {
 
  router = inject(Router);
  previewProduct(product: Product): void {
-  console.log(product);
   if (this.navigateToRoute) {
     this.router.navigate([this.navigateToRoute, product.id]);
   } else {

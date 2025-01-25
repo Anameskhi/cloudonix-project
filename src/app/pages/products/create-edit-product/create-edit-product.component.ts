@@ -80,7 +80,9 @@ export class CreateEditProductComponent {
         const { profile, ...formValues } = res; 
         
         this.userGroupForm.patchValue({ ...formValues, ...profile });
-  
+        if (profile) {
+          this.userGroupForm.get('profile')?.patchValue(profile);
+        }
         Object.keys(this.userGroupForm.controls).forEach(key => {
           const control = this.userGroupForm.get(key);
           if (control) {
@@ -97,7 +99,9 @@ export class CreateEditProductComponent {
       this.router.navigate(['/products-list']);
      })
     }else{
-      console.log('Edit product');
+      this.productService.editProduct(this.editId(),this.userGroupForm.value).subscribe(res=> {
+        this.router.navigate(['/products-list']);
+      })
     }
   }
   listenToQueryParams(): void {
