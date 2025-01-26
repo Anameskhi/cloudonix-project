@@ -1,5 +1,10 @@
 <div class="container">
-  <app-list (deleteProduct)="confirmDelete($event)" navigateToRoute="preview" [productCols]="productCols" [products]="products()" ></app-list>
+  <app-list
+    (deleteProduct)="confirmDelete($event)"
+    navigateToRoute="preview"
+    [productCols]="productCols"
+    [products]="products()"
+  ></app-list>
   <p-confirmDialog></p-confirmDialog>
-  <p-toast/>
+  <p-toast />
 </div>

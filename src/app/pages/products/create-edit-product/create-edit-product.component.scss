@@ -11,6 +11,8 @@ section {
   border: 1px solid #97979b;
   border-radius: 12px;
   width: 60%;
+  overflow: scroll;
+  height: 90vh;
 
   .card {
     background-color: var(--list-bg-color);
@@ -24,7 +26,6 @@ section {
 
     .scope_container {
       display: flex;
-
 
       .row {
         margin-bottom: 15px;
@@ -53,7 +54,6 @@ section {
           }
         }
 
-
         .value {
           font-size: 1rem;
           height: 43px;
@@ -71,7 +71,6 @@ section {
     .delete_button {
       float: right;
     }
-
   }
 
   .flex-card {
@@ -102,7 +101,13 @@ section {
       }
     }
     .width {
-      width: 78%
+      width: 78%;
+    }
+    .dynamic-field {
+      display: flex;
+      gap:3px;
+      margin-right: 3px;
+      margin-bottom: 3px;
     }
 
     .text-area {
@@ -112,8 +117,5 @@ section {
       background-color: var(--main-bg-color);
       overflow: auto !important;
     }
-
   }
-
-
 }

@@ -7,6 +7,7 @@ export interface Product {
         type: string;
         avaible: boolean;
         backlog: number;
+        additionalFields: []
     };
     sku: string;
 }

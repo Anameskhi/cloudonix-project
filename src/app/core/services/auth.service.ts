@@ -1,18 +1,18 @@
+import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import { Inject, Injectable, OnInit, PLATFORM_ID, signal } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService implements OnInit{
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
+export class AuthService {
   private _key: string | null = null;
+  private _loggedInSubject = new BehaviorSubject<boolean>(false);
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {
     if (isPlatformBrowser(this.platformId)) {
       this._key = localStorage.getItem('authKey');
+      this._loggedInSubject.next(!!this._key); 
     }
   }
 
@@ -29,6 +29,10 @@ export class AuthService implements OnInit{
         localStorage.removeItem('authKey');
       }
     }
+    this._loggedInSubject.next(!!this._key); 
   }
 
+  get loggedIn$() {
+    return this._loggedInSubject.asObservable();
+  }
 }
